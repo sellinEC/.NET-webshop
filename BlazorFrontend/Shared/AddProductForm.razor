@@ -1,0 +1,104 @@
+﻿<div class="container">
+
+
+    <EditForm Model="@product" OnValidSubmit="@HandleValidSubmit">
+
+        <div class="mb-3">
+            <label for="Product Name" class="form-label">Product Name</label>
+            <InputText id="name" class="form-control" @bind-Value="product.ProductName" />
+        </div>
+        <div class="mb-3">
+            <label for="shortdescription" class="form-label">Short Description</label>
+            <InputText id="shortdescription" class="form-control" @bind-Value="product.ShortDescription" />
+        </div>
+        <div class="mb-3">
+            <label for="longdescription" class="form-label">Long Description</label>
+            <InputTextArea id="longdescription" class="form-control" @bind-Value="product.LongDescription" />
+        </div>
+        <div class="mb-3">
+            <label for="imageurl" class="form-label">Image url</label>
+            <InputText id="image" class="form-control" @bind-Value="product.ImgUrl" />
+        </div>
+        <div class="mb-3">
+            <label for="Price" class="form-label">Price</label>
+            <InputNumber id="price" class="form-control" @bind-Value="product.Price" />
+        </div>
+        <div class="mb-3">
+            <label for="productcategory" class="form-label">Product category</label>
+
+            @if (categories == null)
+            {
+                <p>loading</p>
+            }
+            else
+            {
+
+                <InputSelect id="category" @bind-Value="product.CategoryId" >
+                    <option value="0">Select category</option>
+                    @foreach (var item in categories)
+                        {
+                        <option value=@item.Id>@item.CategoryName.ToString()</option>
+                        }
+
+                </InputSelect>
+            }
+            @*        <InputSelect id="category" @bind-Value="product.CategoryId">
+                    @foreach (var item in categories) {
+
+                        <option>Hej</option>
+                     }
+                </InputSelect>*@
+            @*<InputNumber id="category" class="form-control" @bind-Value="product.CategoryId" />*@
+        </div>
+        <div class="mb-3">
+            <label for="instock" class="form-checkbox">In stock</label>
+            <InputCheckbox id="stock" class="" @bind-Value="product.InStock" />
+        </div>
+
+        <div class="mb-5">
+            <button class="btn btn-secondary" type="submit">Add New Product</button>
+        </div>
+    </EditForm>
+</div>
+
+
+@code {
+    private Product product = new();
+
+    private async Task HandleValidSubmit()
+    {
+        await Http.PostAsJsonAsync("https://localhost:44398/api/products", product);
+        product = new();
+
+        StateHasChanged();
+    }
+
+
+    private Category[] categories;
+
+    private async Task GetCategoriesAsync()
+    {
+        categories = await Http.GetFromJsonAsync<Category[]>("https://localhost:44398/api/Categories");
+
+        StateHasChanged();
+
+       @* foreach (var item in categories)
+        {
+            Console.WriteLine(item.CategoryName.ToString());
+        }*@
+
+    }
+
+    protected override void OnInitialized()
+    {
+        @*var timer = new Timer(new TimerCallback(_ => InvokeAsync(() => StateHasChanged())), null, 1000, 1000);*@
+    }
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await GetCategoriesAsync();
+    }
+}
+
+
