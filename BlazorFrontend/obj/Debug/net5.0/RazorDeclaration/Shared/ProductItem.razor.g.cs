@@ -104,7 +104,7 @@ using System.Threading;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 12 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\ProductItem.razor"
+#line 21 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\ProductItem.razor"
        
     [Parameter]
     public Product Item { get; set; }

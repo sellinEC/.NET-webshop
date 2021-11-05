@@ -1,9 +1,36 @@
 ﻿@page "/product/{id}"
 
 <div class="container mt-5">
-    <h3>ProductDetails</h3>
-    <p>@Item.ProductName</p>
-    <p>@Item.LongDescription</p>
+    <div class="d-flex justify-content-center align-items-center">
+       
+        <div class="m-4 card p-2 " style="height : 20rem">
+            <h2>@Item.ProductName</h2>
+            <p class="mt-2">@Item.ShortDescription</p>
+            <p>@Item.LongDescription</p>
+            <div class="">
+                <h4>@Item.Price</h4>
+                
+                @if (Item.InStock)
+                {
+                    <span>
+                        <i class="fas fa-cubes text-success font-weight-bold"></i>
+                    </span>
+                }
+                else
+                {
+                    <span>
+                        <i class="fas fa-cubes text-danger font-weight-bold"></i>
+                    </span>
+                }
+               
+            </div>
+        </div>
+        
+        <img src="@Item.ImgUrl" alt="Alternate Text" style="height: 20rem" />
+        
+
+    </div>
+    <button class="btn btn-secondary">ADD TO CART</button>
 </div>
 
 @code {

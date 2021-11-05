@@ -26,7 +26,9 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
+            /*_context.Categories.Include(x => x.Products);*/
             return await _context.Categories.ToListAsync();
+            /* return await _context.Categories.Include(x => x.Products).ToListAsync();*/
         }
 
         // GET: api/Categories/5

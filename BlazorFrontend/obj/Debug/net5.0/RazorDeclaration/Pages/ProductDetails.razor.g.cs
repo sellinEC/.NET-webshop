@@ -105,7 +105,7 @@ using System.Threading;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 9 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
+#line 36 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
        
     [Parameter]
     public string Id { get; set; }

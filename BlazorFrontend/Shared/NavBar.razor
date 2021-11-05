@@ -10,11 +10,59 @@
         <div class="collapse navbar-collapse" id="navbar">
             <div class="navbar-nav">
                 <NavLink class="nav-link" href="" Match="NavLinkMatch.All">Home</NavLink>
-                <NavLink class="nav-link" href="counter">Counter</NavLink>
-                <NavLink class="nav-link" href="fetchdata">Weather Forecast</NavLink>
+                <NavLink class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        @if (categories == null)
+                        {
+                            <li>loading</li>
+                        }
+                        else
+                        {
+                            @foreach (var item in categories)
+                            {
+                                <li><a class="dropdown-item" href="categories/@item.Id">@item.CategoryName</a></li>
+                            }
+                        }
+
+                    </ul>
+                </NavLink>
                 <NavLink class="nav-link" href="products">Products</NavLink>
                 <NavLink class="nav-link" href="admin">Admin Page</NavLink>
             </div>
         </div>
     </div>
 </nav>
+
+@code {
+
+  
+
+    private Category[] categories;
+
+    private async Task GetCategoriesAsync()
+    {
+        categories = await Http.GetFromJsonAsync<Category[]>("https://localhost:44398/api/Categories");
+
+        StateHasChanged();
+
+        @* foreach (var item in categories)
+            {
+                Console.WriteLine(item.CategoryName.ToString());
+            }*@
+
+    }
+
+   
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await GetCategoriesAsync();
+    }
+ 
+}
+
+}
