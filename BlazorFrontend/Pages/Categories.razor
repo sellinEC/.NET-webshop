@@ -1,35 +1,66 @@
 ﻿@page "/categories/{id}"
 
-<h3>Categories</h3>
+<h3>Welcome to cats</h3>
 
-@*@foreach (var product in products)
-    if (id == product.CategoryId
+@if (categories == null)
+{
+
+
+    <p>Loading... @Id</p>
+}
+else
+{
+    foreach (var cat in categories)
     {
-        <ProductItem Item="@product" />
-    }*@
+        if (cat.Id == Int32.Parse(Id))
+        {
+            if (cat.Products.Count > 0)
+            {
+                foreach (var product in cat.Products)
+                {
+                    <ProductItem Item="@product" />
+
+
+                }
+            }else
+                        {
+                            <p>Meow</p>
+                        }
+
+
+        }
+    }
+}
 
 
 @code {
-    @*[Parameter]*@
-   
+    [Parameter]
+    public string Id { get; set; }
 
-
- @*   private Product[] products;
-
-    private async Task GetProductsAsync()
+    private Category[] categories;
+    private async Task GetCategoriesAsync()
     {
-        products = await Http.GetFromJsonAsync<Product[]>("https://localhost:44398/api/Products");
+        categories = await Http.GetFromJsonAsync<Category[]>("https://localhost:44398/api/Categories");
+
+        StateHasChanged();
+
+        foreach (var item in categories)
+        {
+            Console.WriteLine(item.ToString());
+        }
+
+    }
+    protected override async void OnInitialized()
+    {
+        @*var space = navManager.BaseUri;
+            Console.WriteLine(space);*@
+        await GetCategoriesAsync();
+
     }
 
-    protected override void OnInitialized()
-    {
-        var timer = new Timer(new TimerCallback(_ => InvokeAsync(() => StateHasChanged())), null, 1000, 1000);
-    }
 
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await GetProductsAsync();
-    }*@
-
+    @* protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await GetCategoriesAsync();
+        }*@
 }

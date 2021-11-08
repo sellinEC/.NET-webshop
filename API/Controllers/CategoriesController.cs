@@ -22,14 +22,29 @@ namespace API.Controllers
             _context = context;
         }
 
+
+
+
         // GET: api/Categories
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
+            /*  var categories = new List<Category>();
+              foreach (var category in await _context.Categories.Include(x => x.Products).ToListAsync())
+                  categories.Add(new Category
+                  {
+                      Id = category.Id,
+                      CategoryName = category.CategoryName,
+                      Products = category.Products
+                  });*/
             /*_context.Categories.Include(x => x.Products);*/
-            return await _context.Categories.ToListAsync();
-            /* return await _context.Categories.Include(x => x.Products).ToListAsync();*/
+            /*return await _context.Categories.ToListAsync();*/
+            return await _context.Categories.Include(x => x.Products).ToListAsync();
+           /* return categories;*/
         }
+
+
+
 
         // GET: api/Categories/5
         [HttpGet("{id}")]

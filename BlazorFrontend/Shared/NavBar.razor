@@ -1,4 +1,5 @@
-﻿<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
+﻿@*@inject NavigationManager navManager*@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
     <div class="container">
         <NavLink class="navbar-brand" href="" Match="NavLinkMatch.All">
             <i class="fas fa-shopping-cart me-2"></i>
@@ -38,7 +39,7 @@
 
 @code {
 
-  
+
 
     private Category[] categories;
 
@@ -55,14 +56,20 @@
 
     }
 
-   
+    protected override async void OnInitialized()
+    {
+        @*var space = navManager.BaseUri;
+        Console.WriteLine(space);*@
+        await GetCategoriesAsync();
+
+    }
 
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    @*protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await GetCategoriesAsync();
-    }
- 
+    }*@
+
 }
 
 }

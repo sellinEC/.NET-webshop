@@ -104,10 +104,10 @@ using System.Threading;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 39 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\NavBar.razor"
+#line 40 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\NavBar.razor"
        
 
-  
+
 
     private Category[] categories;
 
@@ -123,19 +123,27 @@ using System.Threading;
 #line hidden
 #nullable disable
 #nullable restore
-#line 54 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\NavBar.razor"
+#line 55 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\NavBar.razor"
                
 
     }
 
-   
-
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async void OnInitialized()
     {
+        
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 62 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\NavBar.razor"
+                                   
         await GetCategoriesAsync();
+
     }
- 
+
+
+    
 
 #line default
 #line hidden

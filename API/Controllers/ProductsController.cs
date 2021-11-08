@@ -82,22 +82,32 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(CreateProductModel model)
         {
+            var category = await _context.Categories.FindAsync(model.CategoryId);
 
-            var product = new Product()
+            if (category == null)
             {
-                CategoryId = model.CategoryId,
-                ProductName = model.ProductName,
-                ShortDescription = model.ShortDescription,
-                LongDescription = model.LongDescription,
-                Price = model.Price,
-                ImgUrl = model.ImgUrl,
-                InStock = model.InStock
-            };
+                return BadRequest();
+            }
 
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
+            if (!string.IsNullOrEmpty(model.ProductName) && !string.IsNullOrEmpty(model.ShortDescription))
+            {
+                var product = new Product()
+                {
+                    CategoryId = model.CategoryId,
+                    ProductName = model.ProductName,
+                    ShortDescription = model.ShortDescription,
+                    LongDescription = model.LongDescription,
+                    Price = model.Price,
+                    ImgUrl = model.ImgUrl,
+                    InStock = model.InStock
+                };
 
-            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+                _context.Products.Add(product);
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+            }
+            return BadRequest();
         }
 
 

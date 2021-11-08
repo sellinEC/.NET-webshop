@@ -104,6 +104,45 @@ using System.Threading;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 36 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\Categories.razor"
+       
+    [Parameter]
+    public string Id { get; set; }
+
+    private Category[] categories;
+    private async Task GetCategoriesAsync()
+    {
+        categories = await Http.GetFromJsonAsync<Category[]>("https://localhost:44398/api/Categories");
+
+        StateHasChanged();
+
+        foreach (var item in categories)
+        {
+            Console.WriteLine(item.ToString());
+        }
+
+    }
+    protected override async void OnInitialized()
+    {
+        
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 56 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\Categories.razor"
+                                       
+        await GetCategoriesAsync();
+
+    }
+
+
+    
+
+#line default
+#line hidden
+#nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }

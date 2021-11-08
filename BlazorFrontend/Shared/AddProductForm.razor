@@ -89,16 +89,17 @@
 
     }
 
-    protected override void OnInitialized()
+    protected override async void OnInitialized()
     {
         @*var timer = new Timer(new TimerCallback(_ => InvokeAsync(() => StateHasChanged())), null, 1000, 1000);*@
-    }
+    await GetCategoriesAsync();
+}
 
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await GetCategoriesAsync();
-    }
+@*protected override async Task OnAfterRenderAsync(bool firstRender)
+{
+    await GetCategoriesAsync();
+}*@
 }
 
 

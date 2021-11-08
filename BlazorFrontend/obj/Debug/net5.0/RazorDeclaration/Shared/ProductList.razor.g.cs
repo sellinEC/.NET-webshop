@@ -104,29 +104,36 @@ using System.Threading;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 24 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\ProductList.razor"
+#line 25 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\ProductList.razor"
        
     private Product[] products;
 
     private async Task GetProductsAsync()
     {
         products = await Http.GetFromJsonAsync<Product[]>("https://localhost:44398/api/Products");
+        StateHasChanged();
     }
 
-    protected override void OnInitialized()
+    protected override async void OnInitialized()
     {
-        var timer = new Timer(new TimerCallback(_ => InvokeAsync(() => StateHasChanged())), null, 1000, 1000);
-    }
-
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await GetProductsAsync();
-    }
+        
 
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 36 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\ProductList.razor"
+                                                                                                                  
+        await GetProductsAsync();
+    }
+
+
+
+#line default
+#line hidden
+#nullable disable
+        __builder.AddMarkupContent(0, "\r\n");
+        __builder.AddMarkupContent(1, "\r\n");
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }

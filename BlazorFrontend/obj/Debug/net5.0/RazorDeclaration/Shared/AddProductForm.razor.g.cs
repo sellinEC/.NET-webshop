@@ -136,7 +136,7 @@ using System.Threading;
 
     }
 
-    protected override void OnInitialized()
+    protected override async void OnInitialized()
     {
         
 
@@ -146,13 +146,10 @@ using System.Threading;
 #nullable restore
 #line 94 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\AddProductForm.razor"
                                                                                                                   
-    }
+    await GetCategoriesAsync();
+}
 
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await GetCategoriesAsync();
-    }
 
 #line default
 #line hidden

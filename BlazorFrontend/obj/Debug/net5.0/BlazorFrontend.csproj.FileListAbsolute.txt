@@ -646,3 +646,9 @@ C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\Razor\Page
 C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\scopedcss\Shared\ProductList.razor.rz.scp.css
 C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\RazorDeclaration\Pages\Categories.razor.g.cs
 C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\Razor\Pages\Categories.razor.g.cs
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.WebUtilities.dll.gz
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\bin\Debug\net5.0\wwwroot\_framework\Microsoft.Net.Http.Headers.dll.gz
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\bin\Debug\net5.0\wwwroot\_framework\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\bin\Debug\net5.0\wwwroot\_framework\Microsoft.Net.Http.Headers.dll
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\build-gz\4YFYrAIW.gz
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\build-gz\zLMgs+ae.gz

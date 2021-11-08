@@ -29,7 +29,8 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SqlContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SQLConnection")));
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
