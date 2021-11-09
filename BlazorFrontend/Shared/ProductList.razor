@@ -1,7 +1,6 @@
 ﻿
 
 <div class="container mt-5">
-    DROPDOWN!
     <div class="col-12 ">
         <div class="card-group justify-content-center align-items-center">
 
@@ -34,12 +33,13 @@
     protected override async void OnInitialized()
     {
         @*var timer = new Timer(new TimerCallback(_ => InvokeAsync(() => StateHasChanged())), null, 1000, 1000);*@
-        await GetProductsAsync();
-    }
+    await GetProductsAsync();
+}
 
 
-<!--protected override async Task OnAfterRenderAsync(bool firstRender)
-{-->
-   @* await GetProductsAsync();*@
-<!--}-->
+@*protected override async Task OnAfterRenderAsync(bool firstRender)
+{
+    await GetProductsAsync();
+}*@
+
 }

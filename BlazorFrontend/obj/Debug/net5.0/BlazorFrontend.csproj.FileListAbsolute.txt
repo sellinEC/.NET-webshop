@@ -652,3 +652,7 @@ C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\bin\Debug\net5.0\wwwroot\_f
 C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\bin\Debug\net5.0\wwwroot\_framework\Microsoft.Net.Http.Headers.dll
 C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\build-gz\4YFYrAIW.gz
 C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\build-gz\zLMgs+ae.gz
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\RazorDeclaration\Shared\AddUserForm.razor.g.cs
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\Razor\Shared\AddUserForm.razor.g.cs
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\RazorDeclaration\Shared\AddAdressForm.razor.g.cs
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\Razor\Shared\AddAdressForm.razor.g.cs

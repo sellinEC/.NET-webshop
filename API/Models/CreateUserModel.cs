@@ -14,6 +14,6 @@ namespace API.Models
         public string Password { get; set; }
         public int AdressId { get; set; }
 
-       // public virtual Adress Adress { get; set; }
+        // public virtual Adress Adress { get; set; }
     }
 }

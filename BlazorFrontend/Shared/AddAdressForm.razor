@@ -1,0 +1,47 @@
+﻿<h3>AddUserForm</h3>
+<div class="container">
+
+
+    <EditForm Model="@adress" OnValidSubmit="@HandleValidSubmit">
+
+        <div class="mb-3">
+            <label for="adressline" class="form-label">Adressline</label>
+            <InputText id="fname" class="form-control" @bind-Value="adress.AdressLine" />
+        </div>
+        <div class="mb-3">
+            <label for="zipcode" class="form-label">Zipcode</label>
+            <InputText id="shortdescription" class="form-control" @bind-Value="adress.ZipCode" />
+        </div>
+        <div class="mb-3">
+            <label for="ciry" class="form-label">City</label>
+            <InputText  id="password" class="form-control" @bind-Value="adress.City" />
+        </div>
+   
+
+        <div class="mb-5">
+            <button class="btn btn-secondary" type="submit">Add adress</button>
+        </div>
+    </EditForm>
+</div>
+
+
+@code {
+    private Adress adress = new();
+
+    private async Task HandleValidSubmit()
+    {
+        await Http.PostAsJsonAsync("https://localhost:44398/api/adresses", adress);
+        adress = new();
+
+        StateHasChanged();
+    }
+
+
+
+
+}
+
+
+@code {
+
+}
