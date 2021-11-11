@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API.Data;
 using API.Entities;
+using API.Models;
 
 namespace API.Controllers
 {
@@ -76,10 +77,37 @@ namespace API.Controllers
         // POST: api/Orders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Order>> PostOrder(Order order)
+        public async Task<ActionResult<Order>> PostOrder(CreateOrderModel model)
         {
+           //Skapa ordern.  
+
+           /* var guid = Guid.NewGuid().GetHashCode();*/
+            var order = new Order()
+            
+            {
+                /*Id = model,*/
+                UserId = model.UserId,
+                Status = model.Status
+            };
             _context.Orders.Add(order);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(); //sparar ordern så Id kan hanteras från den
+            //I modellen finns collection OrderLines - kan foreach:as för att hantera varje line
+            foreach (var orderline in model.OrderLines )
+            {
+                var line = new OrderLine()
+                {
+                    OrderId = order.Id, //Hämtas från ordern som skapas i övre. ALternativ kör GUID om man skapar den utanför först
+                    ProductId = orderline.ProductId,
+                    Quantity = orderline.Quantity
+                };
+
+              _context.OrderLines.Add(line);
+              
+            }
+            
+            await _context.SaveChangesAsync(); //sparar allt som addats
+
+
 
             return CreatedAtAction("GetOrder", new { id = order.Id }, order);
         }

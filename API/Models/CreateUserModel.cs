@@ -12,7 +12,9 @@ namespace API.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public int AdressId { get; set; }
+
+        //
+        /*public int AdressId { get; set; }*/
 
         // public virtual Adress Adress { get; set; }
     }

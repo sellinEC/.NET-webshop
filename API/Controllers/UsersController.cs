@@ -96,7 +96,9 @@ namespace API.Controllers
                 LastName = model.LastName,
                 Email = model.Email,
                 Password = model.Password,
-                AdressId = model.AdressId         
+
+                //Ful-lösning utan adress-id i create
+                /*AdressId = adress.AdressId   */    
             };
 
             _context.Users.Add(user);

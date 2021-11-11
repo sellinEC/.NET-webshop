@@ -27,7 +27,7 @@ namespace API.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            
+         
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -56,25 +56,25 @@ namespace API.Data
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Orders__UserId__0E6E26BF");
+                    .HasConstraintName("FK__Orders__UserId__2180FB33");
             });
 
             modelBuilder.Entity<OrderLine>(entity =>
             {
                 entity.HasKey(e => new { e.ProductId, e.OrderId })
-                    .HasName("PK__OrderLin__5835C371418C8410");
+                    .HasName("PK__OrderLin__5835C37144F91B5C");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.OrderLines)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderLine__Order__123EB7A3");
+                    .HasConstraintName("FK__OrderLine__Order__25518C17");
 
                 entity.HasOne(d => d.Product)
                     .WithMany(p => p.OrderLines)
                     .HasForeignKey(d => d.ProductId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderLine__Produ__114A936A");
+                    .HasConstraintName("FK__OrderLine__Produ__245D67DE");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -95,7 +95,7 @@ namespace API.Data
                     .WithMany(p => p.Products)
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Products__Catego__04E4BC85");
+                    .HasConstraintName("FK__Products__Catego__17F790F9");
             });
 
             modelBuilder.Entity<User>(entity =>
@@ -117,8 +117,7 @@ namespace API.Data
                 entity.HasOne(d => d.Adress)
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.AdressId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Users__AdressId__0A9D95DB");
+                    .HasConstraintName("FK__Users__AdressId__1DB06A4F");
             });
 
             OnModelCreatingPartial(modelBuilder);
