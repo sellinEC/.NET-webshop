@@ -1,33 +1,30 @@
 ﻿@page "/cart"
 @inject ILocalStorageService LocalStorage
+@inject NavigationManager navigationManager
 <h3>Checkout</h3>
 
 @{
-    if (cart == null)
+    if (cart == null || cart.Count <= 0)
     {
         <p>No products to show</p>
     }
     else
     {
         <div class="container">
-    @foreach (var product in cart)
-         {
-          <div class="d-flex">
-        <div>Product: @product.ProductName </div>
-        <EditForm Model="@orderLines">
-            <div>Product ammount:</div>
-            <InputSelect @bind-Value="@orderLines.Quantity">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </InputSelect>
-        </EditForm>
-           </div>
-         }
+            @foreach (var product in cart)
+            {
+                <div class="d-flex bg-hej ">
+                    <div class="w-10"><img src="@product.ImgUrl" class="item-image" /></div>
+                    <div class="item-name">
+                        <h5><a href="/products/@product.ProductId"></a>@product.ProductName</h5>
+                    </div>
+                    <div class="item-price">@product.Price kr</div>
+                </div>
+            }
+        <div class="item-price">Total (@cart.Count): @cart.Sum(item => item.Price) kr </div>
+            
         </div>
-       
+
     }
 
 }
@@ -47,14 +44,14 @@ else
                 }
 
         </InputSelect>
-        <button class="btn btn-success" type="submit">Check out order</button>
+        <button class="btn btn-success mt-auto" type="submit">Check out order</button>
     </EditForm>
 }
 
 
 
 @code {
-    private List<Product> cart;
+    private List<CartItem> cart;
     private User[] users;
     private async Task GetUsersAsync()
     {
@@ -73,14 +70,14 @@ else
 
     protected override async void OnInitialized()
     {
-        cart = await LocalStorage.GetItemAsync<List<Product>>("cart");
+        cart = await LocalStorage.GetItemAsync<List<CartItem>>("cart");
         await GetUsersAsync();
         StateHasChanged();
 
     }
 
     private CreateOrder order = new();
-    private CreateOrderLines orderLines = new();
+
 
     private async Task HandleValidSubmit()
     {
@@ -88,13 +85,17 @@ else
         var payload = new List<CreateOrderLines>();
         foreach (var item in cart)
         {
-            orderLines.ProductId = item.Id;
+            var orderLines = new CreateOrderLines();
+            orderLines.ProductId = item.ProductId;
+            orderLines.Quantity = item.Quantity;
             payload.Add(orderLines);
         }
 
         order.OrderLines = payload;
         await Http.PostAsJsonAsync("https://localhost:44398/api/orders", order);
         await LocalStorage.RemoveItemAsync("cart");
+        StateHasChanged();
+        navigationManager.NavigateTo("/cart", true);
     }
 
 }

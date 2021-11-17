@@ -1,5 +1,31 @@
 @import '';
 
+/* /Pages/Cart.razor.rz.scp.css */
+.bg-hej[b-dx6rbi6lmv] {
+    background-color: red !important;
+}
+
+.item-container[b-dx6rbi6lmv] {
+    display: flex;
+    padding: 6px;
+}
+.item.image-wrapper[b-dx6rbi6lmv] {
+    width: 150px;
+    text-align: center;
+}
+.item-image[b-dx6rbi6lmv] {
+    max-height: 150px;
+    max-width: 150px;
+    padding: 6px;
+}
+.item-name[b-dx6rbi6lmv] {
+    flex-grow: 1;
+    padding: 6px;
+}
+.item-price[b-dx6rbi6lmv] {
+    font-weight: 600;
+    text-align: right;
+}
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-clkx1sylpl] {
     position: relative;

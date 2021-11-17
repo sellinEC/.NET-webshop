@@ -666,3 +666,4 @@ C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\RazorDecla
 C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\Razor\Shared\TopMenu.razor.g.cs
 C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\RazorDeclaration\Pages\Cart.razor.g.cs
 C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\Razor\Pages\Cart.razor.g.cs
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\scopedcss\Pages\Cart.razor.rz.scp.css

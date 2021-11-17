@@ -53,3 +53,19 @@ Quantity int not null,
 OrderId int not null references Orders(Id)
 Primary key (ProductId, OrderId)
 )
+GO
+
+INSERT INTO Categories
+VALUES ("Headphones");
+INSERT INTO Categories
+VALUES ("Footwear");
+
+INSERT INTO Categories
+VALUES ("Accessories");
+INSERT INTO Categories
+VALUES ("Sport");
+GO
+
+INSERT INTO Products
+VALUES (1, "Black headphones", "Stylish black headphones", "Best headphones on market with stereo surrpound sound for great pleasure of listens", "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80", 500, 0)
+

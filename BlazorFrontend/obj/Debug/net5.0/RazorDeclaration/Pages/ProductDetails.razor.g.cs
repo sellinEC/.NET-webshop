@@ -10,7 +10,6 @@ namespace BlazorFrontend.Pages
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
 #line 1 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
@@ -98,20 +97,27 @@ using System.Threading;
 #nullable disable
 #nullable restore
 #line 13 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
-using Blazored.LocalStorage;
+using System.Threading.Tasks;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 14 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
-using Blazored.Toast;
+using Blazored.LocalStorage;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 15 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
+using Blazored.Toast;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 16 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
 using Blazored.Toast.Services;
 
 #line default
@@ -126,11 +132,20 @@ using Blazored.Toast.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 38 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
+#line 42 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
        
     [Parameter]
     public string Id { get; set; }
+    private CartItem cartItem = new CartItem { Quantity = 1 };
 
+    
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 47 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
+                                                       
     public Product Item { get; set; } = new();
 
 
@@ -145,28 +160,36 @@ using Blazored.Toast.Services;
 #line hidden
 #nullable disable
 #nullable restore
-#line 55 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
+#line 61 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
                                  
 
 private async Task AddToCart()
 {
-    var cart = await LocalStorage.GetItemAsync<List<Product>>("cart");
+    var cart = await LocalStorage.GetItemAsync<List<CartItem>>("cart");
     if (cart == null)
     {
-        cart = new List<Product>();
+        cart = new List<CartItem>();
     }
-    cart.Add(Item);
+    //Kollar om lägga till mer quantity beroende på om redan finns
+    var itemExists = cart.Find(x => x.ProductId == Item.Id);
+    if (itemExists == null)
+    {
+        cartItem.ProductName = Item.ProductName;
+        cartItem.ProductId = Item.Id;
+        cartItem.ImgUrl = Item.ImgUrl;
+        cartItem.Price = Item.Price;
+        cart.Add(cartItem);
+    }
+    else
+    {
+        itemExists.Quantity += cartItem.Quantity;
+    }
+
     await LocalStorage.SetItemAsync("cart", cart);
     ToastService.ShowSuccess(Item.ProductName, "Added to cart");
-    StateHasChanged();
     
+   
 
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 68 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
-                          
 }
 
 #line default

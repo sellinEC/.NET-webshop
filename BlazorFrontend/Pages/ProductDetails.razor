@@ -2,6 +2,7 @@
 @inject ILocalStorageService LocalStorage
 @inject IToastService ToastService
 
+
 <div class="container mt-5">
     <div class="d-flex justify-content-center align-items-center">
        
@@ -32,13 +33,18 @@
         
 
     </div>
+    <EditForm Model="cartItem">
+        <InputNumber id="quantity" @bind-Value="cartItem.Quantity"/>    
+    </EditForm>
     <button class="btn btn-secondary" @onclick="AddToCart">ADD TO CART</button>
 </div>
 
 @code {
     [Parameter]
     public string Id { get; set; }
+    private CartItem cartItem = new CartItem { Quantity = 1 };
 
+    @*public CartItem CartItem { get; set; } = new();*@
     public Product Item { get; set; } = new();
 
 
@@ -56,15 +62,30 @@
 
 private async Task AddToCart()
 {
-    var cart = await LocalStorage.GetItemAsync<List<Product>>("cart");
+    var cart = await LocalStorage.GetItemAsync<List<CartItem>>("cart");
     if (cart == null)
     {
-        cart = new List<Product>();
+        cart = new List<CartItem>();
     }
-    cart.Add(Item);
+    //Kollar om lägga till mer quantity beroende på om redan finns
+    var itemExists = cart.Find(x => x.ProductId == Item.Id);
+    if (itemExists == null)
+    {
+        cartItem.ProductName = Item.ProductName;
+        cartItem.ProductId = Item.Id;
+        cartItem.ImgUrl = Item.ImgUrl;
+        cartItem.Price = Item.Price;
+        cart.Add(cartItem);
+    }
+    else
+    {
+        itemExists.Quantity += cartItem.Quantity;
+    }
+
     await LocalStorage.SetItemAsync("cart", cart);
     ToastService.ShowSuccess(Item.ProductName, "Added to cart");
-    StateHasChanged();
-    @*OnChange.Invoke();*@
+    
+   
+
 }
 }

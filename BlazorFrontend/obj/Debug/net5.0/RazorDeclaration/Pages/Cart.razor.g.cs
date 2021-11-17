@@ -10,7 +10,6 @@ namespace BlazorFrontend.Pages
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
 #line 1 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
@@ -98,20 +97,27 @@ using System.Threading;
 #nullable disable
 #nullable restore
 #line 13 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
-using Blazored.LocalStorage;
+using System.Threading.Tasks;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 14 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
-using Blazored.Toast;
+using Blazored.LocalStorage;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 15 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
+using Blazored.Toast;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 16 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
 using Blazored.Toast.Services;
 
 #line default
@@ -126,9 +132,9 @@ using Blazored.Toast.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 56 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\Cart.razor"
+#line 53 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\Cart.razor"
        
-    private List<Product> cart;
+    private List<CartItem> cart;
     private User[] users;
     private async Task GetUsersAsync()
     {
@@ -147,14 +153,14 @@ using Blazored.Toast.Services;
 
     protected override async void OnInitialized()
     {
-        cart = await LocalStorage.GetItemAsync<List<Product>>("cart");
+        cart = await LocalStorage.GetItemAsync<List<CartItem>>("cart");
         await GetUsersAsync();
         StateHasChanged();
 
     }
 
     private CreateOrder order = new();
-    private CreateOrderLines orderLines = new();
+
 
     private async Task HandleValidSubmit()
     {
@@ -162,19 +168,24 @@ using Blazored.Toast.Services;
         var payload = new List<CreateOrderLines>();
         foreach (var item in cart)
         {
-            orderLines.ProductId = item.Id;
+            var orderLines = new CreateOrderLines();
+            orderLines.ProductId = item.ProductId;
+            orderLines.Quantity = item.Quantity;
             payload.Add(orderLines);
         }
 
         order.OrderLines = payload;
         await Http.PostAsJsonAsync("https://localhost:44398/api/orders", order);
         await LocalStorage.RemoveItemAsync("cart");
+        StateHasChanged();
+        navigationManager.NavigateTo("/cart", true);
     }
 
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager navigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILocalStorageService LocalStorage { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
