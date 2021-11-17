@@ -96,6 +96,27 @@ using System.Threading;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 13 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
+using Blazored.LocalStorage;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
+using Blazored.Toast;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
+using Blazored.Toast.Services;
+
+#line default
+#line hidden
+#nullable disable
     public partial class NavBar : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -104,7 +125,7 @@ using System.Threading;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 40 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\NavBar.razor"
+#line 41 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\NavBar.razor"
        
 
 
@@ -123,7 +144,7 @@ using System.Threading;
 #line hidden
 #nullable disable
 #nullable restore
-#line 55 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\NavBar.razor"
+#line 56 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\NavBar.razor"
                
 
     }
@@ -136,7 +157,7 @@ using System.Threading;
 #line hidden
 #nullable disable
 #nullable restore
-#line 62 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\NavBar.razor"
+#line 63 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Shared\NavBar.razor"
                                    
         await GetCategoriesAsync();
 

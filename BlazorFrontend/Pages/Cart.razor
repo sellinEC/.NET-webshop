@@ -1,0 +1,100 @@
+﻿@page "/cart"
+@inject ILocalStorageService LocalStorage
+<h3>Checkout</h3>
+
+@{
+    if (cart == null)
+    {
+        <p>No products to show</p>
+    }
+    else
+    {
+        <div class="container">
+    @foreach (var product in cart)
+         {
+          <div class="d-flex">
+        <div>Product: @product.ProductName </div>
+        <EditForm Model="@orderLines">
+            <div>Product ammount:</div>
+            <InputSelect @bind-Value="@orderLines.Quantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </InputSelect>
+        </EditForm>
+           </div>
+         }
+        </div>
+       
+    }
+
+}
+
+@if (users == null)
+{
+    <p>loading</p>
+}
+else
+{
+    <EditForm Model="@order" OnValidSubmit="@HandleValidSubmit">
+        <InputSelect id="users" @bind-Value="@order.UserId">
+            <option value="0">Select User</option>
+            @foreach (var user in users)
+                {
+                <option value=@user.Id>@user.FirstName.ToString() @user.LastName.ToString()</option>
+                }
+
+        </InputSelect>
+        <button class="btn btn-success" type="submit">Check out order</button>
+    </EditForm>
+}
+
+
+
+@code {
+    private List<Product> cart;
+    private User[] users;
+    private async Task GetUsersAsync()
+    {
+        users = await Http.GetFromJsonAsync<User[]>("https://localhost:44398/api/Users");
+
+
+
+        foreach (var user in users)
+        {
+            Console.WriteLine(user.FirstName.ToString());
+        }
+        StateHasChanged();
+
+    }
+
+
+    protected override async void OnInitialized()
+    {
+        cart = await LocalStorage.GetItemAsync<List<Product>>("cart");
+        await GetUsersAsync();
+        StateHasChanged();
+
+    }
+
+    private CreateOrder order = new();
+    private CreateOrderLines orderLines = new();
+
+    private async Task HandleValidSubmit()
+    {
+        Console.WriteLine("clickety");
+        var payload = new List<CreateOrderLines>();
+        foreach (var item in cart)
+        {
+            orderLines.ProductId = item.Id;
+            payload.Add(orderLines);
+        }
+
+        order.OrderLines = payload;
+        await Http.PostAsJsonAsync("https://localhost:44398/api/orders", order);
+        await LocalStorage.RemoveItemAsync("cart");
+    }
+
+}

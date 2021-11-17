@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using API.Entities;
+using API.Models;
 
 #nullable disable
 
@@ -124,5 +125,7 @@ namespace API.Data
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<API.Models.GetUsersModel> GetUsersModel { get; set; }
     }
 }

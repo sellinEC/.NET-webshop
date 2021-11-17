@@ -656,3 +656,13 @@ C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\RazorDecla
 C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\Razor\Shared\AddUserForm.razor.g.cs
 C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\RazorDeclaration\Shared\AddAdressForm.razor.g.cs
 C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\Razor\Shared\AddAdressForm.razor.g.cs
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\bin\Debug\net5.0\wwwroot\_framework\Blazored.LocalStorage.dll.gz
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\bin\Debug\net5.0\wwwroot\_framework\Blazored.Toast.dll.gz
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\bin\Debug\net5.0\wwwroot\_framework\Blazored.LocalStorage.dll
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\bin\Debug\net5.0\wwwroot\_framework\Blazored.Toast.dll
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\build-gz\5amliOSU.gz
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\build-gz\ka6KMV74.gz
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\RazorDeclaration\Shared\TopMenu.razor.g.cs
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\Razor\Shared\TopMenu.razor.g.cs
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\RazorDeclaration\Pages\Cart.razor.g.cs
+C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\obj\Debug\net5.0\Razor\Pages\Cart.razor.g.cs

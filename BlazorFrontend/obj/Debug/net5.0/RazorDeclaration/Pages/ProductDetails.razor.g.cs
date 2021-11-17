@@ -96,6 +96,27 @@ using System.Threading;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 13 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
+using Blazored.LocalStorage;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
+using Blazored.Toast;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\_Imports.razor"
+using Blazored.Toast.Services;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/product/{id}")]
     public partial class ProductDetails : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -105,7 +126,7 @@ using System.Threading;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 36 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
+#line 38 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
        
     [Parameter]
     public string Id { get; set; }
@@ -118,9 +139,41 @@ using System.Threading;
         Item = await Http.GetFromJsonAsync<Product>($"https://localhost:44398/api/Products/{Id}");
     }
 
+   
+
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 55 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
+                                 
+
+private async Task AddToCart()
+{
+    var cart = await LocalStorage.GetItemAsync<List<Product>>("cart");
+    if (cart == null)
+    {
+        cart = new List<Product>();
+    }
+    cart.Add(Item);
+    await LocalStorage.SetItemAsync("cart", cart);
+    ToastService.ShowSuccess(Item.ProductName, "Added to cart");
+    StateHasChanged();
+    
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 68 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
+                          
+}
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ILocalStorageService LocalStorage { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient Http { get; set; }
     }
 }

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "xCv7ytkNAqMTQTCYXJv0iqFT8m7XxRTRRcfX/x7kVKMXbpbyjtNnv+A3BJHzZ7IKB9ciusVL0WAvn2isn63TtQ==",
+  "dgSpecHash": "VDjsJxCmZONWdECeJe4Rn0adVm1R1BDN+0V60dK++kUqfgmXaYZAbE1U9RYzvEs4uQoojS1su25ZbpCZXY68vw==",
   "success": true,
   "projectFilePath": "C:\\Users\\X\\source\\repos\\dotnetwebshop\\BlazorFrontend\\BlazorFrontend.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\X\\.nuget\\packages\\blazored.localstorage\\4.1.5\\blazored.localstorage.4.1.5.nupkg.sha512",
+    "C:\\Users\\X\\.nuget\\packages\\blazored.toast\\3.2.2\\blazored.toast.3.2.2.nupkg.sha512",
     "C:\\Users\\X\\.nuget\\packages\\microsoft.aspnetcore.authorization\\5.0.10\\microsoft.aspnetcore.authorization.5.0.10.nupkg.sha512",
     "C:\\Users\\X\\.nuget\\packages\\microsoft.aspnetcore.components\\5.0.10\\microsoft.aspnetcore.components.5.0.10.nupkg.sha512",
     "C:\\Users\\X\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\5.0.10\\microsoft.aspnetcore.components.analyzers.5.0.10.nupkg.sha512",

@@ -1,4 +1,6 @@
 ﻿@page "/product/{id}"
+@inject ILocalStorageService LocalStorage
+@inject IToastService ToastService
 
 <div class="container mt-5">
     <div class="d-flex justify-content-center align-items-center">
@@ -30,7 +32,7 @@
         
 
     </div>
-    <button class="btn btn-secondary">ADD TO CART</button>
+    <button class="btn btn-secondary" @onclick="AddToCart">ADD TO CART</button>
 </div>
 
 @code {
@@ -44,4 +46,25 @@
     {
         Item = await Http.GetFromJsonAsync<Product>($"https://localhost:44398/api/Products/{Id}");
     }
+
+   @* private Product getProduct()
+    {
+        var product = Item;
+        return product;
+    }*@
+@*public event Action OnChange;*@
+
+private async Task AddToCart()
+{
+    var cart = await LocalStorage.GetItemAsync<List<Product>>("cart");
+    if (cart == null)
+    {
+        cart = new List<Product>();
+    }
+    cart.Add(Item);
+    await LocalStorage.SetItemAsync("cart", cart);
+    ToastService.ShowSuccess(Item.ProductName, "Added to cart");
+    StateHasChanged();
+    @*OnChange.Invoke();*@
+}
 }

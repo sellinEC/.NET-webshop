@@ -1,0 +1,16 @@
+﻿@inject ISyncLocalStorageService localStorage
+
+
+
+<a href="cart" class=" btn btn-info">
+    <i class="fas fa-shopping-cart">Checkout</i>
+    <span class="badge badge-pill badge-light">@GetProductCount()</span>
+</a>
+
+@code {
+    private int GetProductCount()
+    {
+        var cart = localStorage.GetItem<List<Product>>("cart");
+        return cart != null ? cart.Count : 0;
+    }
+}
