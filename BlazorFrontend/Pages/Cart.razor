@@ -1,6 +1,7 @@
 ﻿@page "/cart"
 @inject ILocalStorageService LocalStorage
 @inject NavigationManager navigationManager
+
 <h3>Checkout</h3>
 
 @{
@@ -16,12 +17,12 @@
                 <div class="d-flex bg-hej ">
                     <div class="w-10"><img src="@product.ImgUrl" class="item-image" /></div>
                     <div class="item-name">
-                        <h5><a href="/products/@product.ProductId"></a>@product.ProductName</h5>
+                        <h5><a href="/products/@product.ProductId"></a>@product.ProductName</h5> <p>x @product.Quantity</p>
                     </div>
-                    <div class="item-price">@product.Price kr</div>
+                    <div class="item-price">@(product.Quantity * product.Price) kr</div>
                 </div>
             }
-        <div class="item-price">Total (@cart.Count): @cart.Sum(item => item.Price) kr </div>
+        <div class="item-price">Total: @cart.Sum(item => item.Price * item.Quantity) kr </div>
             
         </div>
 
@@ -35,17 +36,19 @@
 }
 else
 {
+<div class="d-flex justify-content-center align-items-center mt-5" >
     <EditForm Model="@order" OnValidSubmit="@HandleValidSubmit">
-        <InputSelect id="users" @bind-Value="@order.UserId">
-            <option value="0">Select User</option>
+        <InputSelect id="users" class="m-1" @bind-Value="@order.UserId">
+            <option value="0">Select User  </option>
             @foreach (var user in users)
                 {
                 <option value=@user.Id>@user.FirstName.ToString() @user.LastName.ToString()</option>
                 }
 
         </InputSelect>
-        <button class="btn btn-success mt-auto" type="submit">Check out order</button>
+        <button class="btn btn-success m-1 " type="submit">Checkout order</button>
     </EditForm>
+</div>
 }
 
 

@@ -132,7 +132,7 @@ using Blazored.Toast.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 53 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\Cart.razor"
+#line 56 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\Cart.razor"
        
     private List<CartItem> cart;
     private User[] users;

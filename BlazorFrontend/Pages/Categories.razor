@@ -1,38 +1,42 @@
 ﻿@page "/categories/{id}"
 
-<h3>Welcome to cats</h3>
+<h3>Welcome to categories</h3>
 
-@if (categories == null)
-{
+<div class="container d-flex justify-content-center">
 
 
-    <p>Loading... @Id</p>
-}
-else
-{
-    foreach (var cat in categories)
+    @if (categories == null)
     {
-        if (cat.Id == Int32.Parse(Id))
+
+
+        <p>Loading... @Id</p>
+    }
+    else
+    {
+        foreach (var cat in categories)
         {
-            if (cat.Products.Count > 0)
+            if (cat.Id == Int32.Parse(Id))
             {
-                foreach (var product in cat.Products)
+                if (cat.Products.Count > 0)
                 {
-                    <ProductItem Item="@product" />
+                    foreach (var product in cat.Products)
+                    {
+                        <ProductItem Item="@product" />
 
 
+                    }
                 }
-            }else
-                        {
-                            <p>Empty category</p>
-                        }
+                else
+                {
+                    <p>Empty category</p>
+                }
 
 
+            }
         }
     }
-}
 
-
+</div>
 @code {
     [Parameter]
     public string Id { get; set; }

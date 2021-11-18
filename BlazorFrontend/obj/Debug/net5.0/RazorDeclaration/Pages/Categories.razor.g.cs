@@ -132,7 +132,7 @@ using Blazored.Toast.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 36 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\Categories.razor"
+#line 40 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\Categories.razor"
        
     [Parameter]
     public string Id { get; set; }
@@ -158,7 +158,7 @@ using Blazored.Toast.Services;
 #line hidden
 #nullable disable
 #nullable restore
-#line 56 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\Categories.razor"
+#line 60 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\Categories.razor"
                                        
         await GetCategoriesAsync();
 

@@ -36,7 +36,7 @@ FirstName nvarchar(100) not null,
 LastName nvarchar(100) not null,
 Email nvarchar(100) not null,
 Password nvarchar(max) not null,
-AdressId int not null references Adresses(Id)
+AdressId int references Adresses(Id)
 )
 
 GO
@@ -83,7 +83,7 @@ VALUES (
 'Red Headphones',
 'Stylish red headphones for maximum sound',
 'Our red headphones feature the greatest in surround technology for great sound and envyous looks from passers by',
-'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80',
+'https://store.sony.com.au/dw/image/v2/ABBC_PRD/on/demandware.static/-/Sites-sony-master-catalog/default/dwbf55493d/images/MDRZX310APR/MDRZX310APR.png',
 300,
 1
 
@@ -151,9 +151,60 @@ VALUES (
 'Hockey Stick',
 'Stylish black hockey stick for maximum shots',
 'Our black hockey stick feature the greatest in hockey technology for great shots and envyous looks from passers by',
-'https://www.stx.com/media/catalog/product/cache/c7d685abe37f4d15c439fdc154c3cbf1/h/p/hpr2_detail_42_1_1.jpg',
+'https://www.stx.com/ca-en/media/catalog/product/cache/c7d685abe37f4d15c439fdc154c3cbf1/h/p/hpr2_detail_42.jpg',
 700,
 1
 
 );
 
+INSERT INTO Products
+VALUES (
+4,
+'Salad bowl',
+'Stylish salad bowl for maximum taste',
+'Our salad bowl feature the greatest in food technology for great salads and envyous looks from passers by',
+'https://www.kroger.com/product/images/large/front/0064463291536',
+700,
+1
+);
+INSERT INTO Products
+VALUES (
+4,
+'Tinker board',
+'Stylish tinker board for maximum tinkering',
+'Our tinkerboard feature the greatest in tinkering technology for great tinkers and envyous looks from passers by',
+'https://tinker-board.asus.com/images/product09.jpg',
+700,
+0
+);
+
+INSERT INTO Users (FirstName, LastName, Email, Password)
+VALUES (
+'Förnamn',
+'Efternamnsson',
+'mail@domain.com',
+'Bytmig111'
+);
+
+INSERT INTO Users (FirstName, LastName, Email, Password)
+VALUES (
+'Jan',
+'Svensson',
+'janne@domain.com',
+'Bytmig111'
+);
+
+INSERT INTO Users (FirstName, LastName, Email, Password)
+VALUES (
+'Jenny',
+'Jansson',
+'jenny@domain.com',
+'Bytmig111'
+);
+INSERT INTO Users (FirstName, LastName, Email, Password)
+VALUES (
+'Fritte',
+'Fruit',
+'fritte@domain.com',
+'Bytmig111'
+);
