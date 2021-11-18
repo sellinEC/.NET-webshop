@@ -5,14 +5,14 @@
 
 <div class="container mt-5">
     <div class="d-flex justify-content-center align-items-center">
-       
+
         <div class="m-4 card p-2 " style="height : 20rem">
             <h2>@Item.ProductName</h2>
             <p class="mt-2">@Item.ShortDescription</p>
             <p>@Item.LongDescription</p>
             <div class="">
                 <h4>@Item.Price</h4>
-                
+
                 @if (Item.InStock)
                 {
                     <span>
@@ -25,18 +25,25 @@
                         <i class="fas fa-cubes text-danger font-weight-bold"></i>
                     </span>
                 }
-               
+
             </div>
         </div>
-        
+
         <img src="@Item.ImgUrl" alt="Alternate Text" style="height: 20rem" />
-        
+
 
     </div>
     <EditForm Model="cartItem">
-        <InputNumber id="quantity" @bind-Value="cartItem.Quantity"/>    
+        <InputNumber id="quantity" @bind-Value="cartItem.Quantity" />
     </EditForm>
-    <button class="btn btn-secondary" @onclick="AddToCart">ADD TO CART</button>
+    @if (Item.InStock)
+    {
+        <button class="btn btn-secondary" @onclick="AddToCart">ADD TO CART</button>
+    }
+    else
+    {
+        <button class="btn btn-secondary disabled" @onclick="AddToCart">Out of stock</button>
+    }
 </div>
 
 @code {

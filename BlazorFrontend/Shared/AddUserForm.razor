@@ -6,19 +6,19 @@
 
         <div class="mb-3">
             <label for="userfname" class="form-label">First Name</label>
-            <InputText id="fname" class="form-control" @bind-Value="user.FirstName" />
+            <InputText id="fname" class="form-control" @bind-Value="user.FirstName" required/>
         </div>
         <div class="mb-3">
             <label for="userlname" class="form-label">Last Name</label>
-            <InputText id="shortdescription" class="form-control" @bind-Value="user.LastName" />
+            <InputText id="shortdescription" class="form-control" @bind-Value="user.LastName" required/>
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <InputText type="password" id="password" class="form-control" @bind-Value="user.Password" />
+            <InputText type="password" id="password" class="form-control" @bind-Value="user.Password" required />
         </div>
         <div class="mb-3">
             <label for="Price" class="form-label">Email</label>
-            <InputText id="price" class="form-control" @bind-Value="user.Email" />
+            <InputText id="price" class="form-control" @bind-Value="user.Email"required />
         </div>
  @*       <div class="mb-3">
             <label for="adressid" class="form-label">Adress Id</label>

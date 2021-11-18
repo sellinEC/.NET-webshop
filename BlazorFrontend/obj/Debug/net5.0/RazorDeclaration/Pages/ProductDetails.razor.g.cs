@@ -132,7 +132,7 @@ using Blazored.Toast.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 42 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
+#line 49 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
        
     [Parameter]
     public string Id { get; set; }
@@ -144,7 +144,7 @@ using Blazored.Toast.Services;
 #line hidden
 #nullable disable
 #nullable restore
-#line 47 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
+#line 54 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
                                                        
     public Product Item { get; set; } = new();
 
@@ -160,7 +160,7 @@ using Blazored.Toast.Services;
 #line hidden
 #nullable disable
 #nullable restore
-#line 61 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
+#line 68 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\ProductDetails.razor"
                                  
 
 private async Task AddToCart()

@@ -6,7 +6,7 @@
     <p class="mb-1">@Item.ShortDescription</p>
     <p class="mb-1">@Item.LongDescription</p>
     <small>@Item.Id</small>*@
-    <NavLink href="@Href" class="m-3">
+    <div class="m-3">
         <div class="card" style="width: 20rem;">
             <img src="@Item.ImgUrl" class="card-img-top" alt="@Item.ProductName" style="width: 20rem; height: 20rem">
             <div class="card-body">
@@ -15,7 +15,7 @@
                 <a href="@Href" class="btn btn-primary">Details</a>
             </div>
         </div>
-    </NavLink>
+    </div>
 
 
 @code {
