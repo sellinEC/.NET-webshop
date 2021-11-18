@@ -8,7 +8,7 @@ namespace API.Models
 {
     public class CreateProductModel
     {
-        //Valideras i controllern
+        //Valideras i controllern - såg konstigt ut i Swagger - avkommentera för att ha valideringen genom model.
 
 /*        [Display(Name = "Category Id")]
         [Required(ErrorMessage = "{0} must be provided")]*/

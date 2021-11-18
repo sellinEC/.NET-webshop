@@ -17,7 +17,7 @@ ProductName nvarchar(100) not null,
 ShortDescription nvarchar(300) not null,
 LongDescription nvarchar(max),
 ImgUrl nvarchar(max),
-Price money default 0,
+Price decimal default 0,
 InStock bit not null
 
 )
@@ -84,7 +84,7 @@ VALUES (
 'Stylish red headphones for maximum sound',
 'Our red headphones feature the greatest in surround technology for great sound and envyous looks from passers by',
 'https://store.sony.com.au/dw/image/v2/ABBC_PRD/on/demandware.static/-/Sites-sony-master-catalog/default/dwbf55493d/images/MDRZX310APR/MDRZX310APR.png',
-300,
+299.90,
 1
 
 );
