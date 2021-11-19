@@ -86,7 +86,6 @@ VALUES (
 'https://store.sony.com.au/dw/image/v2/ABBC_PRD/on/demandware.static/-/Sites-sony-master-catalog/default/dwbf55493d/images/MDRZX310APR/MDRZX310APR.png',
 299.90,
 1
-
 );
 INSERT INTO Products
 VALUES (
