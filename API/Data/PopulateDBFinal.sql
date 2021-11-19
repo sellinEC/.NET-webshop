@@ -74,7 +74,7 @@ VALUES (
 'Our black headphones feature tyhe greatest in surround technology for great sound and envyous looks from passers by',
 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80',
 300,
-1
+0
 
 );
 INSERT INTO Products
