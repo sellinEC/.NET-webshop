@@ -38,7 +38,7 @@ else
 {
 <div class="d-flex justify-content-center align-items-center mt-5" >
     <EditForm Model="@order" OnValidSubmit="@HandleValidSubmit">
-        <InputSelect id="users" class="m-1" @bind-Value="@order.UserId">
+        <InputSelect id="users" class="m-1" @bind-Value="@order.UserId" required>
             <option value="0">Select User  </option>
             @foreach (var user in users)
                 {
@@ -47,6 +47,10 @@ else
 
         </InputSelect>
         <button class="btn btn-success m-1 " type="submit">Checkout order</button>
+        @if(!isValid)
+                {
+                    <span>Choose user to checkout order</span>
+                }
     </EditForm>
 </div>
 }
@@ -54,6 +58,7 @@ else
 
 
 @code {
+    private Boolean isValid =  true;
     private List<CartItem> cart;
     private User[] users;
     private async Task GetUsersAsync()
@@ -84,21 +89,30 @@ else
 
     private async Task HandleValidSubmit()
     {
-        Console.WriteLine("clickety");
-        var payload = new List<CreateOrderLines>();
-        foreach (var item in cart)
+        if(order.UserId == 0)
         {
-            var orderLines = new CreateOrderLines();
-            orderLines.ProductId = item.ProductId;
-            orderLines.Quantity = item.Quantity;
-            payload.Add(orderLines);
+            isValid = false;
+        }
+        else
+        {
+            isValid = true;
+            Console.WriteLine("clickety");
+            var payload = new List<CreateOrderLines>();
+            foreach (var item in cart)
+            {
+                var orderLines = new CreateOrderLines();
+                orderLines.ProductId = item.ProductId;
+                orderLines.Quantity = item.Quantity;
+                payload.Add(orderLines);
+            }
+
+            order.OrderLines = payload;
+            await Http.PostAsJsonAsync("https://localhost:44398/api/orders", order);
+            await LocalStorage.RemoveItemAsync("cart");
+            StateHasChanged();
+            navigationManager.NavigateTo("/cart", true);
         }
 
-        order.OrderLines = payload;
-        await Http.PostAsJsonAsync("https://localhost:44398/api/orders", order);
-        await LocalStorage.RemoveItemAsync("cart");
-        StateHasChanged();
-        navigationManager.NavigateTo("/cart", true);
     }
 
 }

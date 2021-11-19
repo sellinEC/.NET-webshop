@@ -132,8 +132,9 @@ using Blazored.Toast.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 56 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\Cart.razor"
+#line 60 "C:\Users\X\source\repos\dotnetwebshop\BlazorFrontend\Pages\Cart.razor"
        
+    private Boolean isValid =  true;
     private List<CartItem> cart;
     private User[] users;
     private async Task GetUsersAsync()
@@ -164,21 +165,30 @@ using Blazored.Toast.Services;
 
     private async Task HandleValidSubmit()
     {
-        Console.WriteLine("clickety");
-        var payload = new List<CreateOrderLines>();
-        foreach (var item in cart)
+        if(order.UserId == 0)
         {
-            var orderLines = new CreateOrderLines();
-            orderLines.ProductId = item.ProductId;
-            orderLines.Quantity = item.Quantity;
-            payload.Add(orderLines);
+            isValid = false;
+        }
+        else
+        {
+            isValid = true;
+            Console.WriteLine("clickety");
+            var payload = new List<CreateOrderLines>();
+            foreach (var item in cart)
+            {
+                var orderLines = new CreateOrderLines();
+                orderLines.ProductId = item.ProductId;
+                orderLines.Quantity = item.Quantity;
+                payload.Add(orderLines);
+            }
+
+            order.OrderLines = payload;
+            await Http.PostAsJsonAsync("https://localhost:44398/api/orders", order);
+            await LocalStorage.RemoveItemAsync("cart");
+            StateHasChanged();
+            navigationManager.NavigateTo("/cart", true);
         }
 
-        order.OrderLines = payload;
-        await Http.PostAsJsonAsync("https://localhost:44398/api/orders", order);
-        await LocalStorage.RemoveItemAsync("cart");
-        StateHasChanged();
-        navigationManager.NavigateTo("/cart", true);
     }
 
 
